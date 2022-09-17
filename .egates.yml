@@ -1,0 +1,185 @@
+import csv
+print("***************************************************************************************************************")
+
+
+print("                               Welcome to Egates                                 ")
+
+print(' ')
+
+
+print("***************************************************************************************************************")
+
+
+print("Options:")
+
+
+print("       1:Show database of records")
+print("       2:Enter a new record to the database")
+print("       3:Proceed to egates")
+print("       4:Exit")
+
+
+
+def database(): 
+     f = open("database.csv","r")
+     csv_f = csv.reader(f)
+     for row in csv_f:
+                  print('{:<20}  {:<20}  {:<20}  {:<20}  {:<20}'.format(*row))
+     f.close()
+                       
+def append():
+            import csv
+            c=open("database.csv","a")
+            csv_c=csv.writer(c)
+            name=input("Enter name : ")
+            pno=input("Enter Passport Number : ")
+            eid=int(input("Enter Emirates id number : "))
+            age=int(input("Enter age : "))
+            flight=input("Enter Flight : ")
+            a=[name,pno,eid,age,flight]
+            csv_c.writerow(a)
+            c.close()
+            print("Record Successfully Updated......")
+
+                  
+            print("Want to view Updated Database? Press 1 to view and 2 to Exit")
+            ch=int(input("Enter choice : "))
+            if ch==1:
+                  import csv
+                  d=open("database.csv","r+")
+                  csv_d=csv.reader(d)
+                  for row1 in csv_d:
+                            print('{:<20}  {:<20}  {:<20}  {:<20}  {:<20}'.format(*row1))
+                  d.close()
+            else:
+                  print(" ")
+                  
+                  
+def egates():
+       print("*"*40,"Welcome","*"*40)
+
+       from datetime import datetime
+       now = datetime.now() 
+       dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+       print("date and time of check in is :", dt_string)
+
+                  
+       print("Enter The following details : ")
+       print("         Name")
+       print("         Passport number")
+       print("         EID")
+       print("         Age")
+       print("         FLight")
+       name1=input("Enter name : ")
+       pno1=input("Enter Passport Number : ")
+       eid1=int(input("Enter Emirates id number : "))
+       age1=int(input("Enter age : "))
+       flight1=input("Enter Flight : ")
+       lst=[name1,pno1,eid1,age1,flight1]
+       k=open("database.csv","r",newline='\r\n')
+       csv_k=csv.reader(k)
+       x=False
+       for k in csv_k:
+                  if name1 in k[0] and pno1 in k[1] and str(eid1) in k[2] and str(age1) in k[3] and flight1 in k[4] :
+                        x=True
+       if x==True:
+
+                        import time
+                        def countdown(t):
+                            
+                            while t:
+                                mins, secs = divmod(t, 60)
+                                timer = '{:02d}:{:02d}'.format(mins, secs)
+                                print(timer, end="\n")
+                                time.sleep(1)
+                                t -= 1  
+                            print('Verified!!')
+
+                        t=5
+                        countdown(int(t))
+                        import random
+                        print("Security Code in case of emergencies is : ",random.randint(700,900))
+
+                        print(" ")
+
+                        print("*"*115)
+                                    
+                        print("Would you like to take an optional survey and receive points.......?")
+                                    
+                        print("1. for yes and 2. for no")
+                                    
+                        chh=int(input("Enter Choice :"))
+
+                        if chh==1:
+                              print("*******************Welcome to our survey******************")
+                                          
+                              print("Do you like the efficiency of Egates?  ")
+                              d=input("Enter Answer : ")
+                              if d=="yes" or d=="Yes":
+                                          
+                                    print("Thank you, points received are ",random.randint(400,600))
+                              else:
+                                    print("Please enter any sugeestion for improvements to be made  ")
+                                    
+                                    f=input("ENter suggestions : ")
+                                    from datetime import datetime
+                                    now = datetime.now() 
+                                    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+                                    import random
+
+                                    print("Points received is : ",random.randint(20,40))
+
+                                    
+                                    print("date and time of check out is :", dt_string)
+
+                                    
+                                    print("Thank you")
+                                    
+                                    
+                        elif chh==2:
+                              from datetime import datetime
+                              now = datetime.now() 
+                              dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+
+                              print("date and time of check out is :", dt_string)      
+            
+                              print("****************Thank you*******************")
+                                 
+                                   
+                                   
+
+
+       elif x==False:
+            print("Not verified, cannot proceed further")
+
+            print(" ")
+
+            print("*"*70)
+                              
+            pass
+                                           
+                                    
+                              
+def exits():
+      print("*"*35,"Thank you","*"*35)
+                  
+
+ch=int(input("Enter your choice : "))
+
+if ch==1:
+      database()
+elif ch==2:
+      append()
+elif ch==3:
+      egates()
+elif ch==4:
+      exits()
+else:
+      pass
+      
+
+            
+
+
+
+
